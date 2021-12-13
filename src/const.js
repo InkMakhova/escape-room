@@ -10,3 +10,8 @@ export const APIRoute = {
   Quests: 'quests',
   Orders: 'orders',
 }
+
+export const QuestCardSizes = {
+  Width: '344',
+  Height: '232',
+}
