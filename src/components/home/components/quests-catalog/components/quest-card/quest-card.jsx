@@ -1,7 +1,7 @@
-import * as S from '../quests-catalog.styled';
-import { ReactComponent as IconPerson } from '../../../../../assets/img/icon-person.svg';
-import { ReactComponent as IconPuzzle } from '../../../../../assets/img/icon-puzzle.svg';
-import { AppRoute } from '../../../../../const';
+import * as S from '../../quests-catalog.styled';
+import { ReactComponent as IconPerson } from '../../../../../../assets/img/icon-person.svg';
+import { ReactComponent as IconPuzzle } from '../../../../../../assets/img/icon-puzzle.svg';
+import { AppRoute, QuestCardSizes } from '../../../../../../const';
 
 const QuestCard = (quest) => {
   const { id, title, previewImg, level, peopleCount } = quest;
@@ -12,8 +12,8 @@ const QuestCard = (quest) => {
         <S.Quest>
           <S.QuestImage
             src={previewImg}
-            width="344"
-            height="232"
+            width={QuestCardSizes.Width}
+            height={QuestCardSizes.Height}
             alt={`квест ${title}`}
           />
 
