@@ -1,7 +1,7 @@
 export const AppRoute = {
   Root: '/',
   Contacts: '/contacts',
-  Quest: '/quest',
+  Quest: '/quests',
 }
 
 export const SERVER = 'http://localhost:3001/';
