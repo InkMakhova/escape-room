@@ -8,7 +8,7 @@ import DetailedQuest from 'components/detailed-quest/detailed-quest';
 import Contacts from 'components/contacts/contacts';
 import Home from 'components/home/home';
 import { appTheme } from './common';
-import { AppRoute } from '../../const';
+import {AppRoute} from '../../const';
 import * as S from './app.styled';
 
 const App = () => (
