@@ -3,7 +3,8 @@ import { ReactComponent as IconPerson } from '../../../../../../assets/img/icon-
 import { ReactComponent as IconPuzzle } from '../../../../../../assets/img/icon-puzzle.svg';
 import { AppRoute, QuestCardSizes } from '../../../../../../const';
 
-const QuestCard = (quest) => {
+const QuestCard = (props) => {
+  const { quest } = props;
   const { id, title, previewImg, level, peopleCount } = quest;
 
   return (

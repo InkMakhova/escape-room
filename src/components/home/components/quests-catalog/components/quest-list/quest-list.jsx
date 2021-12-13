@@ -1,8 +1,9 @@
 import QuestCard from '../quest-card/quest-card';
 import * as S from '../../quests-catalog.styled';
 
-const QuestList = (quests) => {
-  const questCards = quests.forEach((quest) => <QuestCard quest={quest} key={quest.id}/>);
+const QuestList = (props) => {
+  const { quests } = props;
+  const questCards = quests.map((quest) => <QuestCard quest={quest} key={quest.id}/>);
 
   return (
     <S.QuestsList>
