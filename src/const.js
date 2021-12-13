@@ -4,7 +4,7 @@ export const AppRoute = {
   Quest: '/quests',
 }
 
-export const SERVER = 'http://localhost:3001/';
+export const BACKEND_URL = 'http://localhost:3001/';
 
 export const APIRoute = {
   Quests: 'quests',
