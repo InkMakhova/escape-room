@@ -4,8 +4,6 @@ import { ReactComponent as IconHorrors } from 'assets/img/icon-horrors.svg';
 import { ReactComponent as IconMystic } from 'assets/img/icon-mystic.svg';
 import { ReactComponent as IconDetective } from 'assets/img/icon-detective.svg';
 import { ReactComponent as IconScifi } from 'assets/img/icon-scifi.svg';
-// import { ReactComponent as IconPerson } from 'assets/img/icon-person.svg';
-// import { ReactComponent as IconPuzzle } from 'assets/img/icon-puzzle.svg';
 import * as S from './quests-catalog.styled';
 import QuestList from './components/quest-list/quest-list';
 import { useState } from 'react';
@@ -15,6 +13,15 @@ const QuestsCatalog = (props) => {
   const {quests} = props;
 
   const [activeTab, setActiveTab] = useState(CatalogTabs.All);
+
+  const getQuestList = (quests) => {
+    if (activeTab === CatalogTabs.All) {
+      return quests;
+    } else {
+      
+    }
+    return activeTab === CatalogTabs.All ? quests : quests.filter((quest) => quest.type === activeTab);
+  }
 
   return (
     <>
@@ -62,7 +69,7 @@ const QuestsCatalog = (props) => {
         </S.TabItem>
       </S.Tabs>
 
-      <QuestList quests={quests.length > 0 ? quests.filter((quest) => quest.type === activeTab) : ''}/>
+      <QuestList quests={quests && quests.length > 0 ? quests.filter((quest) => quest.type === activeTab) : ''}/>
     </>
   )};
 
