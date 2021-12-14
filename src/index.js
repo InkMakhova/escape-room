@@ -4,14 +4,13 @@ import App from 'components/app/app';
 import { createAPI } from './services/api';
 import { configureStore } from '@reduxjs/toolkit';
 import { fetchQuestsAction } from './store/api-actions';
-import { rootReducer } from './store/root-reducer';
+import { Provider } from 'react-redux';
+import { reducer } from './store/reducer';
 
-const api = createAPI(
-  // () => store.dispatch(fetchQuestsAction),
-);
+const api = createAPI();
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
@@ -24,7 +23,9 @@ store.dispatch(fetchQuestsAction());
 
 render(
   <StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </StrictMode>,
   document.getElementById('root'),
 );

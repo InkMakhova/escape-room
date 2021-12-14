@@ -9,13 +9,13 @@ export const createAPI = () => {
     timeout: TIMEOUT,
   });
 
-  // api.interceptors.response.use(
-  //   (response) => response,
-  //
-  //   // (error) => {
-  //   //   return Promise.reject(error);
-  //   // },
-  // );
+  api.interceptors.response.use(
+    (response) => response,
+
+    (error) => {
+      return Promise.reject(error);
+    },
+  );
 
   api.interceptors.request.use(
     (config) => {

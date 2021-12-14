@@ -5,7 +5,7 @@ const initialState = {
   quests: [],
 };
 
-const questsData = createReducer(initialState, (builder) => {
+const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(loadQuests, (state, action) => {
       const quests = action.payload;
@@ -13,4 +13,4 @@ const questsData = createReducer(initialState, (builder) => {
     })
 });
 
-export { questsData };
+export { reducer };
