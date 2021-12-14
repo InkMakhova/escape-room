@@ -3,9 +3,11 @@ import { render } from 'react-dom';
 import App from 'components/app/app';
 import { createAPI } from './services/api';
 import { configureStore } from '@reduxjs/toolkit';
+import { fetchQuestsAction } from './store/api-actions';
+import { rootReducer } from './store/root-reducer';
 
 const api = createAPI(
-  () => store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth)),
+  // () => store.dispatch(fetchQuestsAction),
 );
 
 export const store = configureStore({
@@ -15,8 +17,10 @@ export const store = configureStore({
       thunk: {
         extraArgument: api,
       },
-    }).concat(redirect),
+    }),
 });
+
+store.dispatch(fetchQuestsAction());
 
 render(
   <StrictMode>

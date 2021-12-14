@@ -7,20 +7,23 @@ import { ReactComponent as IconScifi } from 'assets/img/icon-scifi.svg';
 import * as S from './quests-catalog.styled';
 import QuestList from './components/quest-list/quest-list';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { CatalogTabs } from '../../../../const';
+import { getQuests } from '../../../../store/selectors';
 
-const QuestsCatalog = (props) => {
-  const {quests} = props;
+const QuestsCatalog = () => {
+  console.log();
+  const quests = useSelector(getQuests);
 
   const [activeTab, setActiveTab] = useState(CatalogTabs.All);
 
   const getQuestList = (quests) => {
     if (activeTab === CatalogTabs.All) {
       return quests;
-    } else {
-      
     }
-    return activeTab === CatalogTabs.All ? quests : quests.filter((quest) => quest.type === activeTab);
+    const filteredQuests = quests.filter((quest) => quest.type === activeTab)
+
+    return filteredQuests && filteredQuests.length > 0 ? filteredQuests : '';
   }
 
   return (
@@ -69,7 +72,7 @@ const QuestsCatalog = (props) => {
         </S.TabItem>
       </S.Tabs>
 
-      <QuestList quests={quests && quests.length > 0 ? quests.filter((quest) => quest.type === activeTab) : ''}/>
+      <QuestList quests={quests && quests.length > 0 ? getQuestList(quests) : ''}/>
     </>
   )};
 
