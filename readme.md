@@ -1,4 +1,4 @@
-Имя студента: [Inna Makhova] (https://htmlacademy.ru/profile/id1174641)
+Имя студента: Inna Makhova (<a href='https://htmlacademy.ru/profile/id1174641'>Профиль в академии</a>)
 Время затраченное на разработку проекта:
 
 ## Скрипты
