@@ -22,3 +22,9 @@ export const CatalogTabs = {
   Detective: 'Детектив',
   SciFi: 'Sci-fi',
 }
+
+export const QuestLevels = {
+  Hard: 'сложный',
+  Medium: 'средний',
+  Easy: 'простой',
+}

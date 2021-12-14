@@ -1,11 +1,22 @@
 import * as S from '../../quests-catalog.styled';
 import { ReactComponent as IconPerson } from '../../../../../../assets/img/icon-person.svg';
 import { ReactComponent as IconPuzzle } from '../../../../../../assets/img/icon-puzzle.svg';
-import { AppRoute, QuestCardSizes } from '../../../../../../const';
+import { AppRoute, QuestCardSizes, QuestLevels } from '../../../../../../const';
 
 const QuestCard = (props) => {
   const { quest } = props;
   const { id, title, previewImg, level, peopleCount } = quest;
+
+  const getQuestLevel = (level) => {
+    switch (level) {
+      case 'hard':
+        return QuestLevels.Hard;
+      case 'medium':
+        return QuestLevels.Medium;
+      case 'easy':
+        return QuestLevels.Easy;
+    }
+  }
 
   return (
     <S.QuestItem>
@@ -28,7 +39,7 @@ const QuestCard = (props) => {
               </S.QuestFeatureItem>
               <S.QuestFeatureItem>
                 <IconPuzzle />
-                {level}
+                {getQuestLevel(level)}
               </S.QuestFeatureItem>
             </S.QuestFeatures>
           </S.QuestContent>
