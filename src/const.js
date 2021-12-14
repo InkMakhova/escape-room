@@ -14,9 +14,18 @@ export const QuestCardSizes = {
   Height: '232',
 }
 
+export const Genres = {
+  All: 'all',
+  Adventures: 'adventures',
+  Horror: 'horror',
+  Mystic: 'mystic',
+  Detective: 'detective',
+  SciFi: 'sci-fi',
+}
+
 export const CatalogTabs = {
   All: 'Все квесты',
-  Adventure: 'Приключения',
+  Adventures: 'Приключения',
   Horror: 'Ужасы',
   Mystic: 'Мистика',
   Detective: 'Детектив',
