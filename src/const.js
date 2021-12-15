@@ -2,6 +2,7 @@ export const AppRoute = {
   Root: '/',
   Contacts: '/contacts',
   Quest: '/quests',
+  DetailedQuest: '/detailed-quest/'
 }
 
 export const APIRoute = {
@@ -30,6 +31,12 @@ export const CatalogTabs = {
   Mystic: 'Мистика',
   Detective: 'Детектив',
   SciFi: 'Sci-fi',
+}
+
+export const Levels = {
+  Hard: 'hard',
+  Medium: 'medium',
+  Easy: 'easy',
 }
 
 export const QuestLevels = {
