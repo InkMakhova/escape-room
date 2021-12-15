@@ -18,7 +18,7 @@ const App = () => (
     <S.GlobalStyle />
       <Router history={browserHistory}>
         <Switch>
-          <Route exact path={AppRoute.Quest}>
+          <Route exact path={`${AppRoute.DetailedQuest}:id`}>
             <DetailedQuest />
           </Route>
           <Route exact path={AppRoute.Contacts}>
@@ -26,6 +26,9 @@ const App = () => (
           </Route>
           <Route exact path={AppRoute.Root}>
             <Home />
+          </Route>
+          <Route exact path={AppRoute.NotFound}>
+            <NotFoundPage />
           </Route>
           <Route >
             <NotFoundPage />

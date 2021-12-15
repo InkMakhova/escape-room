@@ -2,12 +2,13 @@ export const AppRoute = {
   Root: '/',
   Contacts: '/contacts',
   Quest: '/quests',
-  DetailedQuest: '/detailed-quest/'
+  DetailedQuest: '/detailed-quest/',
+  NotFound: '/page-not-found',
 }
 
 export const APIRoute = {
-  Quests: 'quests',
-  Orders: 'orders',
+  Quests: 'quests/',
+  Orders: 'orders/',
 }
 
 export const QuestCardSizes = {

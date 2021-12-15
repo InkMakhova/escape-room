@@ -13,15 +13,13 @@ const QuestsCatalog = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {dispatch(changeType(Genres.All))}, []);
+  useEffect(() => {dispatch(changeType(Genres.All))}, [dispatch]);
 
   const getQuestList = (quests) => {
     if (currentType === Genres.All) {
       return quests;
     }
     const filteredQuests = quests.filter((quest) => quest.type === currentType);
-
-    console.log(filteredQuests);
 
     return filteredQuests && filteredQuests.length > 0 ? filteredQuests : [];
   }
