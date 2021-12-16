@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from 'components/common/common';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Main = styled.main`
   max-width: 556px;

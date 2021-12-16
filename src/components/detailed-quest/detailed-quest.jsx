@@ -12,6 +12,7 @@ import { fetchDetailedQuestAction } from '../../store/api-actions';
 import { store } from '../../index';
 import NotFoundPage from '../not-found-page/not-found-page';
 import { CatalogTabs, Genres, QuestLevels } from '../../const';
+import { ToastContainer } from 'react-toastify';
 
 const DetailedQuest = () => {
   const {id} = useParams();
@@ -36,6 +37,10 @@ const DetailedQuest = () => {
     setIsBookingModalOpened(true);
   };
 
+  const onSubmitCloseModal = () => {
+    setIsBookingModalOpened(false);
+  }
+
   const getGenre = (genre) => {
     if (genre === Genres.SciFi) {
       return genre;
@@ -50,6 +55,7 @@ const DetailedQuest = () => {
   }
 
   return (
+    <>
     <MainLayout>
       <S.Main>
         <S.PageImage
@@ -90,9 +96,16 @@ const DetailedQuest = () => {
           </S.PageDescription>
         </S.PageContentWrapper>
 
-        {isBookingModalOpened && <BookingModal />}
+        {isBookingModalOpened && <BookingModal closeModal={onSubmitCloseModal}/>}
       </S.Main>
     </MainLayout>
+      <ToastContainer
+        hideProgressBar={false}
+        closeOnClick={true}
+        pauseOnHover={false}
+        closeButton={false}
+      />
+    </>
   );
 };
 
