@@ -1,5 +1,6 @@
 import { loadDetailedQuest, loadQuests } from './action';
 import { APIRoute } from '../const';
+import { toast } from 'react-toastify';
 
 export const fetchQuestsAction = () =>
   async (dispatch, _getState, api) => {
@@ -11,20 +12,18 @@ export const fetchDetailedQuestAction = (id) =>
   async (dispatch, _getState, api) => {
     await api.get(`${APIRoute.Quests}${id}`)
       .then(({ data }) => {
-        const quest = data;
-        dispatch(loadDetailedQuest(quest));
+        dispatch(loadDetailedQuest(data));
       })
   };
 
-export const submitOrderAction = ({ name, peopleCount, phone, isLegal }, errorHandler) =>
+export const submitOrderAction = ({ id, name, peopleCount, phone, isLegal }, successHandler, errorHandler) =>
   async (dispatch, _getState, api) => {
     await api.post(APIRoute.Orders, { name, peopleCount, phone, isLegal })
-      .then(({status}) => {
-        if (status >= 400 ) {
-          errorHandler('Error sending order. Try again later.');
-        }
+      .then(() => {
+        successHandler();
+        toast('Your order has been successfully sent. We\'ll contact you soon!:)', {autoClose: 4000, type: 'success'});
       })
-      .catch(() => {
-        errorHandler('Error sending order. Try again later.');
+      .catch((data) => {
+        errorHandler(data.response.data.messages);
       });
   };
