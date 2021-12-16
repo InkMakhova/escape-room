@@ -12,6 +12,7 @@ import { AppRoute } from '../../const';
 import * as S from './app.styled';
 import NotFoundPage from '../not-found-page/not-found-page';
 import browserHistory from '../../browser-history';
+import StubPage from '../stub-page/stub-page';
 
 const App = () => (
   <ThemeProvider theme={appTheme}>
@@ -23,6 +24,15 @@ const App = () => (
           </Route>
           <Route exact path={AppRoute.Contacts}>
             <Contacts />
+          </Route>
+          <Route exact path={AppRoute.NewGamers}>
+            <StubPage />
+          </Route>
+          <Route exact path={AppRoute.Reviews}>
+            <StubPage />
+          </Route>
+          <Route exact path={AppRoute.Special}>
+            <StubPage />
           </Route>
           <Route exact path={AppRoute.Root}>
             <Home />
