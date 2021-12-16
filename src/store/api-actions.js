@@ -16,7 +16,7 @@ export const fetchDetailedQuestAction = (id) =>
       })
   };
 
-export const submitOrderAction = ({ id, name, peopleCount, phone, isLegal }, successHandler, errorHandler) =>
+export const submitOrderAction = ({ name, peopleCount, phone, isLegal }, successHandler, errorHandler) =>
   async (dispatch, _getState, api) => {
     await api.post(APIRoute.Orders, { name, peopleCount, phone, isLegal })
       .then(() => {

@@ -4,18 +4,22 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { submitOrderAction } from '../../../../store/api-actions';
 
-const BookingModal = () => {
+const BookingModal = (props) => {
+  const { closeModal } = props;
+
   const [userName, setUserName] = useState('');
   const [userPhoneNumber, setUserPhoneNumber] = useState('');
   const [peopleNumber, setPeopleNumber] = useState(1);
   const [isLegal, setIsLegal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
 
-  const onSubmit = (orderData, errorHandler) => {
-    dispatch(submitOrderAction(orderData, errorHandler));
+  const onSubmit = ({ name, peopleCount, phone, isLegal }, successHandler, errorHandler) => {
+    dispatch(submitOrderAction({ name, peopleCount, phone, isLegal }, successHandler, errorHandler));
   };
 
+  //to do / validation
   return (
     <S.BlockLayer>
       <S.Modal>
@@ -35,9 +39,13 @@ const BookingModal = () => {
               peopleCount: peopleNumber,
               phone: userPhoneNumber,
               isLegal: isLegal,
+            }, closeModal,
+              (error) => {
+              setErrorMessage(error)
             })
           }}
         >
+          {errorMessage !== '' ? <p style={{color: 'red'}}>{errorMessage}</p> : ''}
           <S.BookingField>
             <S.BookingLabel htmlFor="booking-name">Ваше Имя</S.BookingLabel>
             <S.BookingInput
@@ -77,7 +85,7 @@ const BookingModal = () => {
               placeholder="Количество участников"
               required
               onChange={({target}) => {
-                setPeopleNumber(target.value);
+                setPeopleNumber(Number(target.value));
               }}
             />
           </S.BookingField>
@@ -89,7 +97,7 @@ const BookingModal = () => {
               name="booking-legal"
               required
               onChange={({target}) => {
-                setIsLegal(target.value);
+                setIsLegal(target.checked);
               }}
             />
             <S.BookingCheckboxLabel
