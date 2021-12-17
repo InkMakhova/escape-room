@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react';
 import * as ol from "ol";
 import TileLayer from 'ol/layer/Tile';
 import XYZ from 'ol/source/XYZ';
@@ -59,7 +59,7 @@ const Map = () => {
         zoom: 16
       })
     });
-  }, []);
+  }, [coordinates]);
 
   return (
       <div id='map'>
