@@ -5,13 +5,16 @@ import { useDispatch } from 'react-redux';
 import { submitOrderAction } from '../../../../store/api-actions';
 
 const BookingModal = (props) => {
-  const { closeModal } = props;
+  const { onCloseModal } = props;
 
   const [userName, setUserName] = useState('');
   const [userPhoneNumber, setUserPhoneNumber] = useState('');
   const [peopleNumber, setPeopleNumber] = useState(1);
   const [isLegal, setIsLegal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState([]);
+  const [nameError, setNameError] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+  const [countPeopleError, setCountPeopleError] = useState('');
 
   const dispatch = useDispatch();
 
@@ -19,11 +22,12 @@ const BookingModal = (props) => {
     dispatch(submitOrderAction({ name, peopleCount, phone, isLegal }, successHandler, errorHandler));
   };
 
-  //to do / validation
   return (
     <S.BlockLayer>
       <S.Modal>
-        <S.ModalCloseBtn>
+        <S.ModalCloseBtn
+          onClick={() => onCloseModal()}
+        >
           <IconClose width="16" height="16" />
           <S.ModalCloseLabel>Закрыть окно</S.ModalCloseLabel>
         </S.ModalCloseBtn>
@@ -39,13 +43,13 @@ const BookingModal = (props) => {
               peopleCount: peopleNumber,
               phone: userPhoneNumber,
               isLegal: isLegal,
-            }, closeModal,
+            }, onCloseModal,
               (error) => {
               setErrorMessage(error)
             })
           }}
         >
-          {errorMessage !== '' ? <p style={{color: 'red'}}>{errorMessage}</p> : ''}
+          {errorMessage !== '' ? <p style={{color: 'red', margin: '0'}}>{errorMessage}</p> : ''}
           <S.BookingField>
             <S.BookingLabel htmlFor="booking-name">Ваше Имя</S.BookingLabel>
             <S.BookingInput
@@ -53,11 +57,17 @@ const BookingModal = (props) => {
               id="booking-name"
               name="booking-name"
               placeholder="Имя"
+              pattern="^[а-яА-ЯёЁa-zA-Z ]{2,20}$"
               required
               onChange={({target}) => {
+                setNameError('');
+                if (!target.value.match(/^[а-яА-ЯёЁa-zA-Z ]{2,20}/)) {
+                  setNameError('Имя должно содержать буквы (2-20 симв.)');
+                }
                 setUserName(target.value);
               }}
             />
+            {nameError !== '' ? <p style={{color: 'orange', margin: '0'}}>{nameError}</p> : ''}
           </S.BookingField>
           <S.BookingField>
             <S.BookingLabel htmlFor="booking-phone">
@@ -68,11 +78,17 @@ const BookingModal = (props) => {
               id="booking-phone"
               name="booking-phone"
               placeholder="Телефон"
+              pattern="^[0-9]{10,10}$"
               required
               onChange={({target}) => {
+                setPhoneNumberError('');
+                if (!target.value.match(/^[0-9]{10,10}$/)) {
+                  setPhoneNumberError('Номер телефона должен состоять из 10 цифр');
+                }
                 setUserPhoneNumber(target.value);
               }}
             />
+            {phoneNumberError !== '' ? <p style={{color: 'orange', margin: '0'}}>{phoneNumberError}</p> : ''}
           </S.BookingField>
           <S.BookingField>
             <S.BookingLabel htmlFor="booking-people">
@@ -83,11 +99,17 @@ const BookingModal = (props) => {
               id="booking-people"
               name="booking-people"
               placeholder="Количество участников"
+              pattern="^[1-9]{1,2}$"
               required
               onChange={({target}) => {
+                setCountPeopleError('');
+                if (!target.value.match(/^[0-9]/) || Number(target.value) < 1 || Number(target.value) > 15) {
+                  setCountPeopleError('Количество участников не может быть менее 1 и более 15');
+                }
                 setPeopleNumber(Number(target.value));
               }}
             />
+            {countPeopleError !== '' ? <p style={{color: 'orange', margin: '0'}}>{countPeopleError}</p> : ''}
           </S.BookingField>
           <S.BookingSubmit type="submit">Отправить заявку</S.BookingSubmit>
           <S.BookingCheckboxWrapper>
