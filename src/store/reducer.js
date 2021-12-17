@@ -23,16 +23,13 @@ const initialState = {
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(loadQuests, (state, action) => {
-      const quests = action.payload;
-      state.quests = quests;
+      state.quests = action.payload;
     })
     .addCase(changeType, (state, action) => {
-        const currentType = action.payload;
-        state.currentType = currentType;
+        state.currentType = action.payload;
       })
     .addCase(loadDetailedQuest, (state, action) => {
-        const currentQuest = action.payload;
-        state.currentQuest = currentQuest;
+        state.currentQuest = action.payload;
       });
 });
 
