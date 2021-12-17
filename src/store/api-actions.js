@@ -22,9 +22,9 @@ export const submitOrderAction = ({ name, peopleCount, phone, isLegal }, success
     await api.post(APIRoute.Orders, { name, peopleCount, phone, isLegal })
       .then(() => {
         successHandler();
-        toast('Your order has been successfully sent. We\'ll contact you soon!:)', {autoClose: 4000, type: 'success'});
+        toast('Ваш заказ был успешно отправлен. Мы скоро вам перезвоним!:)', {autoClose: 3000, type: 'success'});
       })
-      .catch((data) => {
-        errorHandler(data.response.data.messages);
+      .catch(() => {
+        errorHandler(`При отправке заказа на сервер что-то пошло не так:( Попробуйте отправить позже или позвоните нам!`);
       });
   };

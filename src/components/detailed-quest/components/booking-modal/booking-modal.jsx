@@ -11,10 +11,11 @@ const BookingModal = (props) => {
   const [userPhoneNumber, setUserPhoneNumber] = useState('');
   const [peopleNumber, setPeopleNumber] = useState(1);
   const [isLegal, setIsLegal] = useState(false);
-  const [errorMessage, setErrorMessage] = useState([]);
+
   const [nameError, setNameError] = useState('');
   const [phoneNumberError, setPhoneNumberError] = useState('');
   const [countPeopleError, setCountPeopleError] = useState('');
+  const [errorMessage, setErrorMessage] = useState([]);
 
   const dispatch = useDispatch();
 
