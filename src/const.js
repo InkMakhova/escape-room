@@ -2,6 +2,9 @@ export const AppRoute = {
   Root: '/',
   Contacts: '/contacts',
   Quest: '/quests',
+  NewGamers: '/new-gamers',
+  Reviews: '/reviews',
+  Special: '/special',
   DetailedQuest: '/detailed-quest/',
   NotFound: '/page-not-found',
 }
@@ -9,6 +12,14 @@ export const AppRoute = {
 export const APIRoute = {
   Quests: 'quests/',
   Orders: 'orders/',
+}
+
+export const Pages = {
+  Quests: 'Квесты',
+  NewGamers: 'Новичкам',
+  Reviews: 'Отзывы',
+  Special: 'Акции',
+  Contacts: 'Контакты',
 }
 
 export const QuestCardSizes = {
