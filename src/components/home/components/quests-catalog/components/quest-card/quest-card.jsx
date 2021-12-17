@@ -15,6 +15,8 @@ const QuestCard = (props) => {
         return QuestLevels.Medium;
       case Levels.Easy:
         return QuestLevels.Easy;
+      default:
+        throw new Error(`unknown level ${level}`)
     }
   }
 
