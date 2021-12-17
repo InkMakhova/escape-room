@@ -3,8 +3,8 @@ import { createAction } from '@reduxjs/toolkit';
 export const ActionType = {
   LoadQuests: 'data/loadQuests',
   LoadDetailedQuest: 'data/loadDetailedQuest',
-  RedirectToRoute: 'data/redirectToRoute',
-  ChangeType: 'catalog/changeType'
+  ChangeType: 'catalog/changeType',
+  SetIsNotFoundStatus: 'data/setIsNotFoundStatus',
 }
 
 export const loadQuests = createAction(
@@ -25,5 +25,12 @@ export const loadDetailedQuest = createAction(
   ActionType.LoadDetailedQuest,
   (quest) => ({
     payload: quest,
+  }),
+);
+
+export const setIsNotFoundStatus = createAction(
+  ActionType.SetIsNotFoundStatus,
+  (isNotFound) => ({
+    payload: isNotFound,
   }),
 );

@@ -1,4 +1,4 @@
-import { loadDetailedQuest, loadQuests } from './action';
+import { loadDetailedQuest, loadQuests, setIsNotFoundStatus } from './action';
 import { APIRoute } from '../const';
 import { toast } from 'react-toastify';
 
@@ -12,8 +12,9 @@ export const fetchDetailedQuestAction = (id) =>
   async (dispatch, _getState, api) => {
     await api.get(`${APIRoute.Quests}${id}`)
       .then(({ data }) => {
+        dispatch(setIsNotFoundStatus(false));
         dispatch(loadDetailedQuest(data));
-      })
+      }).catch(() => {dispatch(setIsNotFoundStatus(true))});
   };
 
 export const submitOrderAction = ({ name, peopleCount, phone, isLegal }, successHandler, errorHandler) =>
