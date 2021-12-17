@@ -16,35 +16,32 @@ const MainCoordinates = {
 }
 
 const Map = () => {
-
   const coordinates = fromLonLat([MainCoordinates.Lat, MainCoordinates.Lon]);
 
-  const iconFeature = new Feature({
-    geometry: new Point(coordinates),
-    name: 'Escape Room',
-  });
-
-  const iconStyle = new Style({
-    image: new Icon({
-      crossOrigin: 'anonymous',
-      src: 'img/pin.png',
-      scale: 0.1,
-      anchor: [0.5, 1],
-    }),
-  });
-
-  iconFeature.setStyle(iconStyle);
-
-  const vectorSource = new VectorSource({
-    features: [iconFeature],
-  });
-
-  const vectorLayer = new VectorLayer({
-    source: vectorSource,
-  });
-
-
   useEffect(() => {
+    const iconStyle = new Style({
+      image: new Icon({
+        crossOrigin: 'anonymous',
+        src: 'img/pin.png',
+        scale: 0.1,
+        anchor: [0.5, 1],
+      }),
+    });
+
+    const iconFeature = new Feature({
+      geometry: new Point(coordinates),
+      name: 'Escape Room',
+    });
+    iconFeature.setStyle(iconStyle);
+
+    const vectorSource = new VectorSource({
+      features: [iconFeature],
+    });
+
+    const vectorLayer = new VectorLayer({
+      source: vectorSource,
+    });
+
     new ol.Map({
       target: 'map',
       layers: [
