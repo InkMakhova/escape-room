@@ -17,7 +17,7 @@ const Header = () => {
           <S.Links>
             <S.LinkItem>
               <S.Link
-                $isActiveLink={location.pathname === AppRoute.Root}
+                $isActiveLink={location.pathname === AppRoute.Root || location.pathname.includes(AppRoute.DetailedQuest)}
                 to={AppRoute.Root}
               >
                 {Pages.Quests}
