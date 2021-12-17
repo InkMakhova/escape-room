@@ -1,5 +1,5 @@
-Имя студента: Inna Makhova (<a href='https://htmlacademy.ru/profile/id1174641'>Профиль в академии</a>)
-Время затраченное на разработку проекта:
+Имя студента: Inna Makhova (<a href='https://htmlacademy.ru/profile/id1174641'>Профиль в HTML-academy</a>)
+Время затраченное на разработку проекта: 22 ч.
 
 ## Скрипты
 
