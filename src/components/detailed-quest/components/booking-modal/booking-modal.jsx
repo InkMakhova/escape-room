@@ -50,7 +50,7 @@ const BookingModal = (props) => {
             })
           }}
         >
-          {errorMessage !== '' ? <p style={{color: 'red', margin: '0'}}>{errorMessage}</p> : ''}
+          {errorMessage !== '' ? <span style={{color: 'red', margin: '0'}}>{errorMessage}</span> : ''}
           <S.BookingField>
             <S.BookingLabel htmlFor="booking-name">Ваше Имя</S.BookingLabel>
             <S.BookingInput
@@ -68,7 +68,7 @@ const BookingModal = (props) => {
                 setUserName(target.value);
               }}
             />
-            {nameError !== '' ? <p style={{color: 'orange', margin: '0'}}>{nameError}</p> : ''}
+            {nameError !== '' ? <span style={{color: 'orange', margin: '0'}}>{nameError}</span> : ''}
           </S.BookingField>
           <S.BookingField>
             <S.BookingLabel htmlFor="booking-phone">
@@ -89,7 +89,7 @@ const BookingModal = (props) => {
                 setUserPhoneNumber(target.value);
               }}
             />
-            {phoneNumberError !== '' ? <p style={{color: 'orange', margin: '0'}}>{phoneNumberError}</p> : ''}
+            {phoneNumberError !== '' ? <span style={{color: 'orange', margin: '0'}}>{phoneNumberError}</span> : ''}
           </S.BookingField>
           <S.BookingField>
             <S.BookingLabel htmlFor="booking-people">
@@ -110,7 +110,7 @@ const BookingModal = (props) => {
                 setPeopleNumber(Number(target.value));
               }}
             />
-            {countPeopleError !== '' ? <p style={{color: 'orange', margin: '0'}}>{countPeopleError}</p> : ''}
+            {countPeopleError !== '' ? <span style={{color: 'orange', margin: '0'}}>{countPeopleError}</span> : ''}
           </S.BookingField>
           <S.BookingSubmit type="submit">Отправить заявку</S.BookingSubmit>
           <S.BookingCheckboxWrapper>
